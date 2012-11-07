@@ -142,3 +142,39 @@ sse.on('connection', function(client) {
   client.send({data : 'Yay! Granted access!'});
 });
 ```
+
+
+## Events
+
+`SSE` will emit the following events:
+
+
+### "connection"
+A `connection` event will be emitted with a `client` object when a client connects
+to the SSE server. The `client` object is then used to send messages to the 
+client.
+
+
+
+## client.send(senderObj)
+
+Sends messages to the connected client. `senderObj` is a configuration object 
+with the following possible properties:
+
+* `data`: A message in form of a string which is to be sent to the connected 
+client. This property is required.
+* `event`: A event name the data should be assosiated with. In the connected
+client the received message will trigger events on a eventlistener attached to 
+this name.
+* `index`: The index of a message. Used by the connected client to detect if it
+has lost any messages during a drop in conectivity with the server. Normally a 
+increasing number for each message. 
+* `retry`: How many milliseconds the connected client should wait until it tries
+to reconnect if it loose connection with the server. By default not set and 
+controlled by the connected client. In most browsers this is 3000 milliseconds.
+
+
+
+## client.end()
+
+Forcibly close the connection to the client.
