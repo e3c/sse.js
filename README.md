@@ -1,4 +1,4 @@
-sse.js: a server-sent events implementation for node.js
+# sse.js - A Server-Sent Events implementation for node.js
 ===========================
 
 The [HTML5 Server-Sent Events specification](http://dev.w3.org/html5/eventsource/)
@@ -7,14 +7,14 @@ dedicated server-push protocols".
 
 
 
-# Introduction
+## Introduction
 
 Server-Sent Events (SSE) enables servers to push data from the server to a client.
 A client is normally a web browser but can also be a another server supporting
 the Event-Source specification.
 
 
-## SSE vs. WebSockets
+### SSE vs. WebSockets
 
 SSE is [half-duplex](http://en.wikipedia.org/wiki/Duplex_(telecommunications)#Half-duplex)
 and is intended to send data only from the server to the client. WebSockets is
@@ -60,14 +60,12 @@ is done by traditional XHR requests.
 Choose wisly!
 
 
-## Support in browsers
+### Support in browsers
 
 Please see [Can I Use](http://caniuse.com/eventsource) for a detailed overview
 of which browsers support SSE.
 
 
-
-# Usage
 
 ## Installing
 
@@ -101,6 +99,7 @@ es.onmessage = function (event) {
   console.log(event.data);
 };
 ```
+
 
 ## SSE(httpServer, options)
 
