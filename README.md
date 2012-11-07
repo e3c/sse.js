@@ -1,4 +1,5 @@
-# sse.js: a server-sent events implementation for node.js #
+sse.js: a server-sent events implementation for node.js
+===========================
 
 The [HTML5 Server-Sent Events specification](http://dev.w3.org/html5/eventsource/)
 is introduced "to enable servers to push data to Web pages over HTTP or using
@@ -6,14 +7,14 @@ dedicated server-push protocols".
 
 
 
-## Introduction ##
+# Introduction
 
 Server-Sent Events (SSE) enables servers to push data from the server to a client.
 A client is normally a web browser but can also be a another server supporting
 the Event-Source specification.
 
 
-### SSE vs. WebSockets ###
+## SSE vs. WebSockets
 
 SSE is [half-duplex](http://en.wikipedia.org/wiki/Duplex_(telecommunications)#Half-duplex)
 and is intended to send data only from the server to the client. WebSockets is
@@ -59,21 +60,21 @@ is done by traditional XHR requests.
 Choose wisly!
 
 
-### Support in browsers ###
+## Support in browsers
 
 Please see [Can I Use](http://caniuse.com/eventsource) for a detailed overview
 of which browsers support SSE.
 
 
 
-## Usage ##
+# Usage
 
-### Installing ###
+## Installing
 
 `npm install sse`
 
 
-### Basic server ###
+## Basic server
 
 ```js
 var SSE 	= require('sse'),
@@ -101,7 +102,7 @@ es.onmessage = function (event) {
 };
 ```
 
-### SSE(httpServer, options) ###
+## SSE(httpServer, options)
 
 Create a new SSE server. `httpServer` takes a web server object which the SSE
 server will be attached too. `options` is a configuration object with the
@@ -113,7 +114,7 @@ to the SSE stream. The function must return `true` if the request should be
 granted access and `false` if not. The the http `request` object is passed as the
 first attribute to the function.
 
-Example on setting a custom path:
+### Example on setting a custom path:
 
 ```js
 var sse = new SSE(server, {path : '/api/stream'});
@@ -128,7 +129,7 @@ In the client this SSE stream is now available as follow:
 var es = new EventSource("/api/stream");
 ```
 
-Example on appending a verification function:
+### Example on appending a verification function:
 
 ```js
 var auth = function(req) {
