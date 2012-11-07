@@ -59,6 +59,12 @@ is done by traditional XHR requests.
 Choose wisly!
 
 
+### Support in browsers ###
+
+Please see [Can I Use](http://caniuse.com/eventsource) for a detailed overview
+of which browsers support SSE.
+
+
 
 ## Usage ##
 
@@ -81,7 +87,7 @@ var server = http.createServer(function(req, res) {
 server.listen(8080, '127.0.0.1', function() {
   var sse = new SSE(server);
   sse.on('connection', function(client) {
-    client.send('hi there!');
+    client.send({data : 'Boy howdy!'});
   });
 });
 ```
@@ -112,7 +118,7 @@ Example on setting a custom path:
 ```js
 var sse = new SSE(server, {path : '/api/stream'});
 sse.on('connection', function(client) {
-  client.send('hi there!');
+  client.send({data : 'Boy howdy!'});
 });
 ```
 
@@ -127,12 +133,12 @@ Example on appending a verification function:
 ```js
 var auth = function(req) {
   var grantAccess = false;
-  // Do some auth magic that sets grantAccess too true or false
+  // Do some auth magic that sets grantAccess to true or false
   return grantAccess;
 }
 
 var sse = new SSE(server, {verifyRequest : auth});
 sse.on('connection', function(client) {
-  client.send('Yay! Granted access!');
+  client.send({data : 'Yay! Granted access!'});
 });
 ```
