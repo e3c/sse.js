@@ -24,7 +24,7 @@ var server = http.createServer(function(req, res) {
 server.listen(8080, '127.0.0.1', function() {
   var sse = new SSE(server);
   sse.on('connection', function(client) {
-    client.send('hi there!');
+    client.send('hi there, '+ client.id +'!');
   });
 });
 ```
@@ -32,7 +32,7 @@ server.listen(8080, '127.0.0.1', function() {
 Client code for the above server:
 
 ```js
-var es = new EventSource("/sse");
+var es = new EventSource("/sse/test");
 es.onmessage = function (event) {
   console.log(event.data);
 };
